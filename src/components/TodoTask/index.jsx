@@ -1,7 +1,7 @@
-const TodoTask = () => {
+const TodoTask = ({ task }) => {
   return (
     <>
-      <p>Tarefa</p>
+      <p>{task}</p>
     </>
   );
 }

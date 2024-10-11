@@ -16,23 +16,32 @@ const StyledSection = styled.div`
 
 const Todo = () => {
   const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
 
-  function handleTask(event) {
-    setNewTask(event.target.value);
-    console.log(newTask);
-  };
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    // const formData = new FormData(form);
+
+    // const formJson = Object.fromEntries(formData.entries());
+    // const newTask = form;
+    setTasks(form)
+
+    console.log(tasks);
+  }
 
 
   return (
     <StyledSection>
-      <input
-        type="text"
-        placeholder="Write our next task"
-        onChange={handleTask}
-      />
-      <button>+</button>
-      <TodoTask />
+      <form method="post" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Write our next task"
+        />
+        <button type="submit">+</button>
+      </form>
+
+      {/* {tasks.map(tasks => <TodoTask></TodoTask>)} */}
     </StyledSection>
   );
 };
