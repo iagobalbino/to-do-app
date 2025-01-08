@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
 import Todo from "./components/Todo";
 import { useState } from "react";
+import tasks from './tasks.json';
+
 
 const StyledBackground = styled.div`
   background-color: #e4e0e5;
@@ -14,8 +16,12 @@ const StyledBackground = styled.div`
 
 function App() {
 
-  const [tasks, setTasks] = useState('Deu certo');
-  // console.log(tasks);
+  const [todos, setTodos] = useState([]);
+
+  function addTodo(todo) {
+    setTodos(todos.map(todo));
+    return todos;
+  };
 
   return (
     <StyledBackground>

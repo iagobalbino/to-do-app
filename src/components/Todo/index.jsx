@@ -14,34 +14,35 @@ const StyledSection = styled.div`
 `;
 
 
+
 const Todo = () => {
-  const [tasks, setTasks] = useState([]);
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    const form = event.target;
-    // const formData = new FormData(form);
+    // Read the form data
+    const form = e.target;
+    const formData = new FormData(form);
 
-    // const formJson = Object.fromEntries(formData.entries());
-    // const newTask = form;
-    setTasks(form)
-
-    console.log(tasks);
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
   }
-
 
   return (
     <StyledSection>
       <form method="post" onSubmit={handleSubmit}>
         <input
+          name="Todo"
           type="text"
           placeholder="Write our next task"
+          defaultValue=""
+        // onChange={event => event.target.value}
         />
+
         <button type="submit">+</button>
       </form>
 
-      {/* {tasks.map(tasks => <TodoTask></TodoTask>)} */}
+      {/* Estava pesquisando sobre JSON e como atualizá-lo */}
     </StyledSection>
   );
 };
