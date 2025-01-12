@@ -1,7 +1,8 @@
 const TodoTask = ({ task }) => {
   return (
     <>
-      <p>{task}</p>
+      {task.map(<p>{task.description}</p>)}
+      {console.log(task.description)};
     </>
   );
 }

@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
 import Todo from "./components/Todo";
 import { useState } from "react";
-import tasks from './tasks.json';
+import TodoTask from "./components/TodoTask";
+
 
 
 const StyledBackground = styled.div`
@@ -16,11 +17,16 @@ const StyledBackground = styled.div`
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    {
+      "description": "",
+      "isDone": false
+    }
+  ]);
 
-  function addTodo(todo) {
-    setTodos(todos.map(todo));
-    return todos;
+  function addTodo() {
+    setTodos.push()
+    { console.log(todos) }
   };
 
   return (
@@ -28,7 +34,7 @@ function App() {
       <GlobalStyles />
       <Header />
       <TaskCounter />
-      <Todo />
+      <Todo todos={todos} />
     </StyledBackground>
   )
 }
