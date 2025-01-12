@@ -2,7 +2,7 @@ import styled from "styled-components"
 import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
-import Todo from "./components/Todo";
+import TodoList from "./components/TodoList";
 import { useState } from "react";
 import TodoTask from "./components/TodoTask";
 
@@ -34,7 +34,7 @@ function App() {
       <GlobalStyles />
       <Header />
       <TaskCounter />
-      <Todo todos={todos} />
+      <TodoList todos={todos} />
     </StyledBackground>
   )
 }
