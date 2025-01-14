@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
 import TodoList from "./components/TodoList";
 import { useState } from "react";
-import TodoTask from "./components/TodoTask";
 
 
 
@@ -18,10 +17,11 @@ const StyledBackground = styled.div`
 function App() {
 
   const [todos, setTodos] = useState([
-    {
-      "description": "",
-      "isDone": false
-    }
+    // {
+    //   "id": 0,
+    //   "description": "",
+    //   "isDone": false
+    // }
   ]);
 
   function addTodo() {
@@ -34,7 +34,7 @@ function App() {
       <GlobalStyles />
       <Header />
       <TaskCounter />
-      <TodoList todos={todos} />
+      <TodoList />
     </StyledBackground>
   )
 }
