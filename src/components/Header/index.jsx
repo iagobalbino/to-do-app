@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import todoImage from "../../../public/images/to-do-list-svgrepo-com.svg";
+import todoImage from "../../../public/images/to-do-google.svg";
 
 const StyledHeader = styled.header`
   padding: 30px 20px;
