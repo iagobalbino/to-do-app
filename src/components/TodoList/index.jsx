@@ -4,8 +4,6 @@ import editIcon from "../../../public/images/edit-google.svg"
 import deleteIcon from "../../../public/images/delete-google.svg"
 import { v4 as uuidv4 } from "uuid";
 
-let nextId = 0;
-
 const StyledSection = styled.div`
   width: 480px;
   margin: 40px auto;
@@ -36,6 +34,16 @@ const Task = styled.div`
     height: 24px;
   }
 
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* .task p {
+    text-decoration: line-through;
+  } */
+
   .icons {
     width: 60px;
     display: flex;
@@ -46,6 +54,7 @@ const Task = styled.div`
 const TodoList = () => {
   const [todo, setTodo] = useState('');
   const [arrTodo, setArrTodo] = useState([]);
+  const [check, setCheck] = useState("false");
 
   function handleClick(e) {
     e.preventDefault();
@@ -56,6 +65,9 @@ const TodoList = () => {
     console.log(todo);
     console.log(arrTodo);
   };
+
+  const handleCheck = (e) => setCheck(e.target.checked);
+
 
 
   return (
@@ -71,9 +83,10 @@ const TodoList = () => {
       {
         arrTodo.map(todo => (
           <Task>
-            <div>
-              <input type="radio" />
-              <label>{todo.todo}</label>
+            <div className="task">
+              <input type="checkbox" defaultChecked={check} onChange={handleCheck} />
+              {/* <label>{todo.todo}</label> */}
+              {check ? <p style={{ "text-decoration": "line-through" }}>{todo.todo}</p> : <p>{todo.todo}</p>}
             </div>
             <div className="icons">
               <div>
@@ -86,7 +99,7 @@ const TodoList = () => {
           </Task>
         ))
       }
-    </StyledSection>
+    </StyledSection >
   );
 };
 
