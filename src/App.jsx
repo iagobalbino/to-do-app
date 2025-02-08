@@ -3,9 +3,6 @@ import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
 import TodoList from "./components/TodoList";
-import { useState } from "react";
-
-
 
 const StyledBackground = styled.div`
   background-color: #e4e0e5;
@@ -15,20 +12,6 @@ const StyledBackground = styled.div`
 `;
 
 function App() {
-
-  const [todos, setTodos] = useState([
-    // {
-    //   "id": 0,
-    //   "description": "",
-    //   "isDone": false
-    // }
-  ]);
-
-  function addTodo() {
-    setTodos.push()
-    { console.log(todos) }
-  };
-
   return (
     <StyledBackground>
       <GlobalStyles />

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import editIcon from "../../../public/images/edit-google.svg"
 import deleteIcon from "../../../public/images/delete-google.svg"
-import { v4 as uuidv4 } from "uuid";
 
 const StyledSection = styled.div`
   width: 480px;
@@ -40,10 +39,6 @@ const Task = styled.div`
     gap: 24px;
   }
 
-  /* .task p {
-    text-decoration: line-through;
-  } */
-
   .icons {
     width: 60px;
     display: flex;
@@ -51,42 +46,40 @@ const Task = styled.div`
   }
 `;
 
+
+
 const TodoList = () => {
-  const [todo, setTodo] = useState('');
-  const [arrTodo, setArrTodo] = useState([]);
-  const [check, setCheck] = useState("false");
+  const [todo, setTodo] = useState([{
+    id: '',
+    description: ''
+  }]);
+  const [check, setCheck] = useState(false);
+  const handleCheck = (e) => setCheck(e.target.checked);
 
   function handleClick(e) {
     e.preventDefault();
-    setArrTodo([
-      ...arrTodo,
+    setTodo([
+      ...todo,
       { id: uuidv4(), todo: todo }
     ]);
-    console.log(todo);
-    console.log(arrTodo);
   };
-
-  const handleCheck = (e) => setCheck(e.target.checked);
-
-
 
   return (
     <StyledSection>
       <input
         type="text"
         placeholder="Write your next task"
-        value={todo}
+        value={todo.description}
         onChange={e => setTodo(e.target.value)}
       />
       <button onClick={handleClick}>+</button>
 
       {
-        arrTodo.map(todo => (
-          <Task>
+        todo.map(todo => {
+          <Task key={todo.id}>
             <div className="task">
               <input type="checkbox" defaultChecked={check} onChange={handleCheck} />
-              {/* <label>{todo.todo}</label> */}
-              {check ? <p style={{ "text-decoration": "line-through" }}>{todo.todo}</p> : <p>{todo.todo}</p>}
+              <p>{todo.description}</p>
             </div>
             <div className="icons">
               <div>
@@ -97,8 +90,10 @@ const TodoList = () => {
               </div>
             </div>
           </Task>
-        ))
+        })
       }
+
+
     </StyledSection >
   );
 };
