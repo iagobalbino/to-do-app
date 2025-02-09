@@ -1,7 +1,8 @@
-import styled from "styled-components";
 import { useState } from "react";
+import styled from "styled-components";
 import editIcon from "../../../public/images/edit-google.svg"
 import deleteIcon from "../../../public/images/delete-google.svg"
+import { v4 as uuidv4 } from 'uuid';
 
 const StyledSection = styled.div`
   width: 480px;
@@ -49,19 +50,19 @@ const Task = styled.div`
 
 
 const TodoList = () => {
-  const [todo, setTodo] = useState([{
-    id: '',
-    description: ''
-  }]);
+  const [todo, setTodo] = useState([]);
   const [check, setCheck] = useState(false);
+  const [arrTodo, setArrTodo] = useState([]);
+
   const handleCheck = (e) => setCheck(e.target.checked);
 
   function handleClick(e) {
     e.preventDefault();
-    setTodo([
-      ...todo,
-      { id: uuidv4(), todo: todo }
+    setArrTodo([
+      ...arrTodo,
+      { id: uuidv4(), description: todo, checked: check }
     ]);
+    console.log(arrTodo);
   };
 
   return (
@@ -69,17 +70,18 @@ const TodoList = () => {
       <input
         type="text"
         placeholder="Write your next task"
-        value={todo.description}
+        value={todo}
         onChange={e => setTodo(e.target.value)}
       />
       <button onClick={handleClick}>+</button>
 
       {
-        todo.map(todo => {
-          <Task key={todo.id}>
+        arrTodo.map((todo, index) => (
+          <Task key={index}>
             <div className="task">
               <input type="checkbox" defaultChecked={check} onChange={handleCheck} />
-              <p>{todo.description}</p>
+              {check ? <p style={{ textDecoration: 'line-through' }}>{todo.description}</p> : <p>{todo.description}</p>}
+
             </div>
             <div className="icons">
               <div>
@@ -90,11 +92,10 @@ const TodoList = () => {
               </div>
             </div>
           </Task>
-        })
+        ))
       }
 
-
-    </StyledSection >
+    </StyledSection>
   );
 };
 
