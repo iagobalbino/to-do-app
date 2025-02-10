@@ -54,7 +54,10 @@ const TodoList = () => {
   const [check, setCheck] = useState(false);
   const [arrTodo, setArrTodo] = useState([]);
 
-  const handleCheck = (e) => setCheck(e.target.checked);
+  function handleCheck(e) {
+    setCheck(e.target.checked);
+    console.log(e);
+  };
 
   function handleClick(e) {
     e.preventDefault();
@@ -80,7 +83,8 @@ const TodoList = () => {
           <Task key={index}>
             <div className="task">
               <input type="checkbox" defaultChecked={check} onChange={handleCheck} />
-              {check ? <p style={{ textDecoration: 'line-through' }}>{todo.description}</p> : <p>{todo.description}</p>}
+              {/* {check ? <p style={{ textDecoration: 'line-through' }}>{todo.description}</p> : <p>{todo.description}</p>} */}
+              <p style={{ textDecoration: 'line-through' }}>{todo.description}</p>
 
             </div>
             <div className="icons">
