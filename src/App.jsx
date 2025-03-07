@@ -3,6 +3,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header";
 import TaskCounter from "./components/TaskCounter";
 import TodoList from "./components/TodoList";
+import { useState } from "react";
 
 const StyledBackground = styled.div`
   background-color: #e4e0e5;
@@ -12,6 +13,7 @@ const StyledBackground = styled.div`
 `;
 
 function App() {
+
   return (
     <StyledBackground>
       <GlobalStyles />
