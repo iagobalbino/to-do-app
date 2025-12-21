@@ -35,13 +35,13 @@ const TodoItem = styled.div`
   }
 `;
 
-const Todo = ({ todo = [], inputValue }) => {
+const Todo = ({ id, value }) => {
 
   return (
-    <TodoItem id={todo.id}>
+    <TodoItem id={id}>
       <div className="task">
         <input className="todoInput" type="checkbox" />
-        <p>{inputValue}</p>
+        <p>{value}</p>
 
       </div>
       <div className="icons">

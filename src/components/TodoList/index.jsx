@@ -14,12 +14,19 @@ const StyledSection = styled.div`
 `;
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  const [toDo, setToDo] = useState({});
+  const [arrToDo, setArrToDo] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
-    console.log(inputValue);
+    setToDo(event.target.value);
+    console.log(toDo);
+  };
+
+  const handleClick = () => {
+    setArrToDo([...arrToDo, { id: id++, value: value }]);
+    setToDo('');
+    console.log(arrToDo);
   };
 
   return (
@@ -27,13 +34,13 @@ const TodoList = () => {
       <input
         type="text"
         placeholder="Write your next task"
-        value={inputValue}
+        value={toDo}
         onChange={handleChange}
       />
-      <button>+</button>
-      {todos.map(todo => <Todo
-        inputValue={inputValue}
+      <button onClick={handleClick}>+</button>
+      {arrToDo.map(todo => <Todo
         id={todo.id}
+        inputValue={todo.value}
       />)}
 
     </StyledSection>
