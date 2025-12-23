@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styled from "styled-components";
 import editIcon from "../../../../public/images/edit-google.svg"
 import deleteIcon from "../../../../public/images/delete-google.svg"
+
 
 const TodoItem = styled.div`
   width: 480px;
@@ -35,20 +35,20 @@ const TodoItem = styled.div`
   }
 `;
 
-const Todo = ({ id, value }) => {
+const Todo = ({ id, value, onDelete, onEdit }) => {
 
   return (
-    <TodoItem id={id}>
-      <div className="task">
+    <TodoItem >
+      <div className="task" key={id}>
         <input className="todoInput" type="checkbox" />
         <p>{value}</p>
 
       </div>
-      <div className="icons">
-        <div>
+      <div className="icons" onClick={onDelete}>
+        <div >
           <img src={editIcon} alt="Editar" />
         </div>
-        <div>
+        <div onClick={onEdit}>
           <img src={deleteIcon} alt="Deletar" />
         </div>
       </div>
