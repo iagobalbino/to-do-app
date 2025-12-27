@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Counter from "../Counter";
+import Counter from "./Counter";
+import { useState } from "react";
 
 const StyledDiv = styled.div`
   width: 480px;
@@ -24,14 +25,17 @@ const StyledDiv = styled.div`
   }
 `;
 
-const TaskCounter = () => {
+const TaskCounter = ({ counter }) => {
+
   return (
     <StyledDiv>
       <div>
         <h2>Task Done</h2>
         <p>Keep it up</p>
       </div>
-      <Counter counter={0} />
+      <Counter>
+        {counter}
+      </Counter>
     </StyledDiv>
   );
 };

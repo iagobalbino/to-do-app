@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from 'uuid';
 import Todo from "./Todo";
 
 const StyledSection = styled.div`
@@ -13,35 +12,7 @@ const StyledSection = styled.div`
   }
 `;
 
-const TodoList = () => {
-  const [toDo, setToDo] = useState({ id: null, text: '' });
-  const [arrToDo, setArrToDo] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  const handleChange = (event) => {
-    setToDo({
-      ...toDo,
-      id: uuidv4(),
-      text: event.target.value
-    });
-    console.log(toDo);
-  };
-
-  const handleClick = () => {
-    setArrToDo([...arrToDo, toDo]);
-    setToDo({ text: '' });
-    console.log(arrToDo);
-  };
-
-  const onDelete = (id) => {
-    console.log('Deleted: ', id);
-    setArrToDo(arrToDo.filter(toDo => toDo.id !== id));
-  };
-
-  const onEdit = () => {
-
-  };
-
+const TodoList = ({ toDo, handleChange, handleClick, arrToDo, onEdit, onDelete }) => {
 
   return (
     <StyledSection>
@@ -56,7 +27,7 @@ const TodoList = () => {
         key={toDo.id}
         value={toDo.text}
         onDelete={() => onDelete(toDo.id)}
-        editlToDo={onEdit}
+        editlToDo={() => onEdit(toDo.id)}
       />)}
 
     </StyledSection>

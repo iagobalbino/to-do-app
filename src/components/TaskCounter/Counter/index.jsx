@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const StyledCircle = styled.div`
@@ -15,10 +16,11 @@ const StyledCircle = styled.div`
   }
 `;
 
-const Counter = ({ counter = 0 }) => {
+const Counter = ({ children }) => {
+
   return (
     <StyledCircle>
-      <p>{counter}</p>
+      <p>{children}</p>
     </StyledCircle>
   );
 };
