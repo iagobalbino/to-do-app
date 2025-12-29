@@ -16,9 +16,12 @@ const StyledBackground = styled.div`
 
 function App() {
   const [counter, setCounter] = useState(0);
-
   const [toDo, setToDo] = useState({ id: null, text: '' });
   const [arrToDo, setArrToDo] = useState([]);
+
+  const counterArr = () => {
+    return some
+  };
 
   const handleChange = (event) => {
     setToDo({
