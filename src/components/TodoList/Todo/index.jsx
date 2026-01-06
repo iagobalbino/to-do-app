@@ -35,12 +35,12 @@ const TodoItem = styled.div`
   }
 `;
 
-const Todo = ({ id, value, onDelete, onEdit }) => {
+const Todo = ({ id, value, onDelete, onEdit, onChecked }) => {
 
   return (
-    <TodoItem >
+    <TodoItem>
       <div className="task" key={id}>
-        <input className="todoInput" type="checkbox" />
+        <input className="todoInput" type="checkbox" onClick={onChecked} />
         <p>{value}</p>
 
       </div>

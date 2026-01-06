@@ -18,10 +18,13 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [toDo, setToDo] = useState({ id: null, text: '' });
   const [arrToDo, setArrToDo] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   const counterArr = () => {
-    return console.log('Contando ' + arrToDo.length);
+    // setCounter(console.log('Contando ' + counter));
+    console.log('Contando ' + setCounter(counter));
   };
+
 
   const handleChange = (event) => {
     setToDo({
@@ -47,11 +50,17 @@ function App() {
     console.log('Clicked')
   };
 
+  const onChecked = () => {
+    if (checked !== true) {
+      console.log('Marcado');
+    }
+  };
+
   return (
     <StyledBackground>
       <GlobalStyles />
       <Header />
-      <TaskCounter counter={counterArr} />
+      <TaskCounter counter={counter} />
       <TodoList
         toDo={toDo}
         arrToDo={arrToDo}
@@ -59,6 +68,7 @@ function App() {
         handleClick={handleClick}
         onDelete={onDelete}
         onEdit={onEdit}
+        onChecked={onChecked}
       />
     </StyledBackground>
   )

@@ -12,7 +12,7 @@ const StyledSection = styled.div`
   }
 `;
 
-const TodoList = ({ toDo, handleChange, handleClick, arrToDo, onEdit, onDelete }) => {
+const TodoList = ({ toDo, handleChange, handleClick, arrToDo, onEdit, onDelete, onChecked }) => {
 
   return (
     <StyledSection>
@@ -27,7 +27,8 @@ const TodoList = ({ toDo, handleChange, handleClick, arrToDo, onEdit, onDelete }
         key={toDo.id}
         value={toDo.text}
         onDelete={() => onDelete(toDo.id)}
-        editlToDo={() => onEdit(toDo.id)}
+        onEdit={() => onEdit(toDo.id)}
+        onChecked={() => onChecked(toDo.id)}
       />)}
 
     </StyledSection>
