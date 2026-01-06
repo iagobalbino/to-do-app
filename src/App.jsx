@@ -20,7 +20,7 @@ function App() {
   const [arrToDo, setArrToDo] = useState([]);
 
   const counterArr = () => {
-    return some
+    return console.log('Contando ' + arrToDo.length);
   };
 
   const handleChange = (event) => {
@@ -51,7 +51,7 @@ function App() {
     <StyledBackground>
       <GlobalStyles />
       <Header />
-      <TaskCounter counter={counter} />
+      <TaskCounter counter={counterArr} />
       <TodoList
         toDo={toDo}
         arrToDo={arrToDo}

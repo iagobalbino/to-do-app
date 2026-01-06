@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Counter from "./Counter";
-import { useState } from "react";
 
 const StyledDiv = styled.div`
   width: 480px;
@@ -23,6 +21,21 @@ const StyledDiv = styled.div`
   p {
     font-size: 24px;
   }
+
+  .counter-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #eebc5d;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 48px;
+      }
+  }
 `;
 
 const TaskCounter = ({ counter }) => {
@@ -33,9 +46,10 @@ const TaskCounter = ({ counter }) => {
         <h2>Task Done</h2>
         <p>Keep it up</p>
       </div>
-      <Counter>
-        {counter}
-      </Counter>
+      {/* <Counter /> */}
+      <div className="counter-circle">
+        <p>{counter}</p>
+      </div>
     </StyledDiv>
   );
 };
